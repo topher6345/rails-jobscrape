@@ -1,0 +1,37 @@
+<h1>Listing jobs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Location</th>
+      <th>Link</th>
+      <th>Haveapplied</th>
+      <th>Company</th>
+      <th>Interested</th>
+      <th>Referred</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @jobs.each do |job| %>
+      <tr>
+        <td><%= truncate(job.title) %></td>
+        <td><%= job.location %></td>
+        <td><%= link_to "Link", job.link %></td>
+        <td><%= job.haveapplied %></td>
+        <td><%= link_to job.company, "https://www.google.com/#q=#{job.company}", target: "_blank"  if job.company%></td>
+        <td><%= job.interested %></td>
+        <td><%= link_to job.referred.to_s[11..-2], job.referred %></td>
+        <td><%= link_to 'Show', job %></td>
+        <td><%= link_to 'Edit', edit_job_path(job) %></td>
+        <td><%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Job', new_job_path %>
