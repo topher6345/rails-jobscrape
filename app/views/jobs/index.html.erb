@@ -1,11 +1,9 @@
 <h1>Listing jobs</h1>
-
 <table>
   <thead>
     <tr>
       <th>Title</th>
       <th>Location</th>
-      <th>Link</th>
       <th>Haveapplied</th>
       <th>Company</th>
       <th>Interested</th>
@@ -17,9 +15,8 @@
   <tbody>
     <% @jobs.each do |job| %>
       <tr>
-        <td><%= truncate(job.title) %></td>
-        <td><%= job.location %></td>
-        <td><%= link_to "Link", job.link %></td>
+        <td><%= link_to truncate(job.title),  job.link %></td>
+        <td><%= link_to job.location, "https://www.google.com/#q=#{job.location}", target: "_blank"  if job.location %></td>,
         <td><%= job.haveapplied %></td>
         <td><%= link_to job.company, "https://www.google.com/#q=#{job.company}", target: "_blank"  if job.company%></td>
         <td><%= job.interested %></td>
