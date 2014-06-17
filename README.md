@@ -39,6 +39,8 @@ I have given each site I search its own script and `require` them in `lib/tasks/
 require 'tasks/sites/mysearchscript.rb'
 ```
 
+Disclaimer: Check the Terms of Service of the site you are crawling.
+
 ### Example script
 
 ```ruby
